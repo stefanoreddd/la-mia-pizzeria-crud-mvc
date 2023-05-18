@@ -1,0 +1,105 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="text-center">
+    1. Dichiarare una variabile valorizzandola con il nostro nome.
+    Dichiarare un'altra variabile valorizzandola con il nostro cognome.
+    Stampare il nostro nome e cognome all'interno di un tag h2.
+
+    2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso)
+    Stampare dentro uno span il risultato.
+
+    3. Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
+
+    4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
+
+    5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi
+
+    6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina
+        a. la data di 7 giorni fa
+        b. che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+        c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+</div>
+
+<div>
+    1. @{
+        string myName = "Stefano Luigi";
+        string mySurname = "Caggiula";
+    }
+
+    <h2>@myName @mySurname</h2>
+
+    
+    
+    2. @{
+        int sumOfNumbers(int n){
+            n = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                n += i;
+            }
+            return n;
+        }
+
+        <span>@sumOfNumbers(10)</span>
+    }
+
+
+
+    3. @{
+        string frase = "nel mezzo del cammin di nostra vita";
+        char letterToCount = 'a';
+
+        int aCount(string prova, char letter)
+        {
+            int count = 0;
+            foreach (char a in prova)
+            {
+                if (a == letter)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        <p>@aCount(frase, letterToCount)</p>
+    }
+
+
+
+    4. @{
+        Random random = new Random();
+        List<int> numbers = new List<int>();
+
+        for(int i = 0; i < 20; i++)
+        {
+            int numero = random.Next(1, 91);
+            numbers.Add(numero);
+        }
+    }
+
+        <ul>@{
+            foreach (int n in numbers)
+            {
+                if (n >= 20 && n <= 70)
+                {
+                    <li>@n</li>
+                }
+            }
+          }
+        </ul>
+
+
+
+    5. <p>@DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")</p>
+
+
+
+    6. 
+        a. <p>@DateTime.Now.AddDays(-7)</p>
+        b. <p>@DateTime.Now.DayOfWeek</p>
+        c. <p>@DateTime.Now.AddYears(1).DayOfWeek</p>
+</div>
