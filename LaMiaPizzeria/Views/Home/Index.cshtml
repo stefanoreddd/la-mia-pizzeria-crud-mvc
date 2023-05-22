@@ -49,18 +49,21 @@
                             <div class="border-top border-dark-subtle">
                                 <h5 class="text-center p-4"><span style="font-weight:bold;">3,50 €</span></h5>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
-                                        Modifica pizza
-                                    </a>
+                            @if (User.IsInRole("ADMIN"))
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
+                                            Modifica pizza
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
+                                            Cancella pizza
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
-                                        Cancella pizza
-                                    </a>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -77,18 +80,21 @@
                             <div class="border-top border-dark-subtle">
                                 <h5 class="text-center p-4"><span style="font-weight:bold;">4,50 €</span></h5>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
-                                        Modifica pizza
-                                    </a>
+                            @if (User.IsInRole("ADMIN"))
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
+                                            Modifica pizza
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
+                                            Cancella pizza
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
-                                        Cancella pizza
-                                    </a>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -105,31 +111,37 @@
                             <div class="border-top border-dark-subtle">
                                 <h5 class="text-center p-4"><span style="font-weight:bold;">6,00 €</span></h5>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
-                                        Modifica pizza
-                                    </a>
+                            @if (User.IsInRole("ADMIN"))
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Update", "Pizza")">
+                                            Modifica pizza
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
+                                            Cancella pizza
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <a class="btn btn-primary" href="@Url.Action("Delete", "Pizza")">
-                                        Cancella pizza
-                                    </a>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
 
             <!--3 RIGA-->
-            <div class="row">
-                <div class="col-12">
-                    <a class="btn btn-primary" href="@Url.Action("Create", "Pizza")">
-                        Crea una nuova pizza
-                    </a>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <a class="btn btn-primary" href="@Url.Action("Create", "Pizza")">
+                            Crea una nuova pizza
+                        </a>
+                    </div>
                 </div>
-            </div>
+            }
 
         </div>
     </main>
