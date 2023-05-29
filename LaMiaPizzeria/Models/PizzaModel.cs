@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LaMiaPizzeria.Models
 {
-    public class Pizza
+    public class PizzaModel
     {
         [Key]
         public int Id { get; set; }
@@ -29,12 +29,12 @@ namespace LaMiaPizzeria.Models
         [MaxLength(4, ErrorMessage = "Il campo del prezzo può contenere al massimo 4 caratteri")]
         public float Price { get; set; }
 
-        public Pizza()
+        public PizzaModel()
         {
 
         }
 
-        public Pizza(string title, string description, string image, float price)
+        public PizzaModel(string title, string description, string image, float price)
         {
             Title = title;
             Description = description;

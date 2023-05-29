@@ -15,7 +15,7 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new PizzaContext())
             {
-                List<Pizza> ourPizzas = db.Pizzas.ToList();
+                List<PizzaModel> ourPizzas = db.Pizze.ToList();
                 return View("Index", ourPizzas);
             }
         }
@@ -31,7 +31,7 @@ namespace LaMiaPizzeria.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Create(Pizza newPizza)
+        public IActionResult Create(PizzaModel newPizza)
         {
             if (!ModelState.IsValid)
             {
@@ -40,7 +40,7 @@ namespace LaMiaPizzeria.Controllers
 
             using (PizzaContext db = new PizzaContext())
             {
-                db.Pizzas.Add(newPizza);
+                db.Pizze.Add(newPizza);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -55,7 +55,7 @@ namespace LaMiaPizzeria.Controllers
 
             using (PizzaContext db = new PizzaContext())
             {
-                List<Pizza> matchTitlePizzas = db.Pizzas.Where(pizza => pizza.Title.Contains(titleKeyword)).ToList();
+                List<PizzaModel> matchTitlePizzas = db.Pizze.Where(pizza => pizza.Title.Contains(titleKeyword)).ToList();
 
                 ProfileListPizzas resultModel = new ProfileListPizzas(connectedProfile, titleKeyword, matchTitlePizzas);
 
@@ -70,7 +70,7 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza? pizzaToModify = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+                PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToModify != null)
                 {
@@ -88,7 +88,7 @@ namespace LaMiaPizzeria.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Update(int id, Pizza modifiedPizza)
+        public IActionResult Update(int id, PizzaModel modifiedPizza)
         {
             if (!ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace LaMiaPizzeria.Controllers
 
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza? pizzaToModify = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+                PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToModify != null)
                 {
@@ -126,7 +126,7 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza? pizzaToDelete = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+                PizzaModel? pizzaToDelete = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToDelete != null)
                 {

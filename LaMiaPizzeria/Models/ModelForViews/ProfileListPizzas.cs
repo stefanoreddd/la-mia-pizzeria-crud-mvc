@@ -6,9 +6,9 @@
 
         public string SearchString { get; set; }
 
-        public List<Pizza> ResultPizzas { get; set; }
+        public List<PizzaModel> ResultPizzas { get; set; }
 
-        public ProfileListPizzas(UserProfile profile, string searchString, List<Pizza> resultPizzas)
+        public ProfileListPizzas(UserProfile profile, string searchString, List<PizzaModel> resultPizzas)
         {
             Profile = profile;
             SearchString = searchString;
